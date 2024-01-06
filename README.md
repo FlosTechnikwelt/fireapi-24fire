@@ -39,7 +39,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Zeige alle VMs an
 
-```http
+```javascript
   myFireApi.list().listVM().then(data => {
     console.log('Liste der VMs:', data);
   }).catch(error => {
@@ -49,7 +49,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Zeige alle Hostsysteme an
 
-```http
+```javascript
   myFireApi.list().listHosts().then(data => {
     console.log('Liste der Hosts:', data);
   }).catch(error => {
@@ -60,7 +60,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Zeige alle Betriebsysteme an (OS) an
 
-```http
+```javascript
   myFireApi.list().listOS().then(data => {
     console.log('Liste der Betriebssysteme:', data);
   }).catch(error => {
@@ -70,7 +70,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Zeige alle ISOs an
 
-```http
+```javascript
   myFireApi.list().listISO().then(data => {
     console.log('Liste der ISOs:', data);
   }).catch(error => {
@@ -83,7 +83,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Zeige alle DDoS Einstellungen an
 
-```http
+```javascript
   myFireApi.DDOS(vmID).getDDOSsettings().then(data => {
     console.log('DDoS Einstellungen:', data);
   }).catch(error => {
@@ -97,7 +97,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Bearbeite die DDoS Einstellungen
 
-```http
+```javascript
   myFireApi.DDOS(vmID).editDDOSsettings('layer4', 'layer7', 'ip_adress').then(data => {
     console.log('Antwort von der fireApi:', data);
   }).catch(error => {
@@ -120,7 +120,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 ### VM -> Backup
 #### -> Zeige alle Backup an
 
-```http
+```javascript
   myFireApi.Backup(vmID).getAllBackups().then(backups => {
     console.log('All Backups:', backups);
   }).catch(error => {
@@ -136,7 +136,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Ein Backup von einer VM erstellen
 
-```http
+```javascript
   myFireApi.Backup(vmID).createBackup().then(response => {
     console.log('Backup Created:', response);
   }).catch(error => {
@@ -153,7 +153,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 #### -> Status beim erstellen einens Backups
 ##### Wie weit ist der erstellungsprozess
 
-```http
+```javascript
   myFireApi.Backup(vmID).createBackupStatus().then(response => {
     console.log('Backup Creation Status:', response);
   }).catch(error => {
@@ -168,7 +168,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Ein Backup auf den Server widerherstellen
 
-```http
+```javascript
   myFireApi.Backup(vmID).restoreBackup(backupId).then(response => {
     console.log('Backup Restored:', response);
   }).catch(error => {
@@ -187,7 +187,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 #### -> Den Wiederherstellungsprozess Status aprufen
 ##### Wie weit ist die Wiederherstellung
 
-```http
+```javascript
   myFireApi.Backup(vmID).restoreBackupStatus(backupId).then(response => {
     console.log('Restore Status:', response);
   }).catch(error => {
@@ -204,7 +204,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Ein erstelltes Backup löschen
 
-```http
+```javascript
   myFireApi.Backup(vmID).deleteBackup(backupId).then(response => {
     console.log('Backup Deleted:', response);
   }).catch(error => {
@@ -224,7 +224,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Eine ISO in die VM einlegen
 
-```http
+```javascript
   myFireApi.ISO(vmID).insertISO(ISOid).then(response => {
     console.log('ISO wurde eingelegt:', response)
   }).catch(error => { 
@@ -240,7 +240,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Eine ISO in die VM aus der VM entfernen
 
-```http
+```javascript
   myFireApi.ISO(vmID).removeISO().then(removeResponse => {
    console.log('ISO Removed:', removeResponse)
   }).catch(removeError => { 
@@ -259,7 +259,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Eine VM neuistallieren
 
-```http
+```javascript
   myFireApi.VM().reinstall(vmID, OS).then(response => {
     console.log('Reinstall response:', response);
   }).catch(error => {
@@ -275,7 +275,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Eine neue VM erstellen
 
-```http
+```javascript
   myFireApi.VM().createVM(cores, mem, disk, os, hostsystem, ips, backup_slots, network_speed).then(response => {
     console.log('Create VM response:', response);
   }).catch(error => {
@@ -297,7 +297,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Konfiguartion anpassen
 
-```http
+```javascript
   myFireApi.VM().reconfigureVM(vmID, cores, mem, disk, backup_slots, network_speed).then(response => {
     console.log('Antwort beim Rekonfigurieren der VM:', response);
   }).catch(error => {
@@ -316,7 +316,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Konfiguartion anzeigen
 
-```http
+```javascript
   myFireApi.VM().getVMconfig(vmID).then(config => {
     console.log('VM-Konfiguration:', config);
   }).catch(error => {
@@ -331,7 +331,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Den RDNS-Eintrag verändern
 
-```http
+```javascript
   myFireApi.VM().changeRDNS(vmID, domain, ip_adress).then(response => {
     console.log('Antwort beim Ändern des RDNS für die VM:', response);
   }).catch(error => {
@@ -348,7 +348,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Einen noVNC-Konsolen Link erstellen
 
-```http
+```javascript
   myFireApi.VM().noVNC(vmID).then(response => {
         console.log('noVNC Link:', response);
   }).catch(error => {
@@ -363,7 +363,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Löschen / Kündigen
 
-```http
+```javascript
   myFireApi.VM().deleteVM(vmID).then(response => {
     console.log('Antwort beim Löschen der VM:', response);
   }).catch(error => {
@@ -379,7 +379,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Status Abrufen
 
-```http
+```javascript
   myFireApi.VM().VMstatus(vmID).then(status => {
     console.log('VM-Status:', status);
   }).catch(error => {
@@ -394,7 +394,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Den aktuellen Installationsstatus abrufen
 
-```http
+```javascript
   myFireApi.VM().installStatus(vmID).then(installStatus => {
     console.log('Installationsstatus:', installStatus);
   }).catch(error => {
@@ -410,7 +410,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 #### -> Das Passwort der VM zurücksetzten
 ##### Dies ist nur möglich wenn das Betreibsystem OS ist und nicht mit einer ISO erstellt wurde. 
 
-```http
+```javascript
   myFireApi.VM().resetPassword(vmID).then(response => {
     console.log('Antwort beim Zurücksetzen des Passworts für die VM:', response);
   }).catch(error => {
@@ -424,7 +424,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Starten
 
-```http
+```javascript
   myFireApi.VM().startVM(vmID).then(response => {
     console.log('Antwort beim Starten der VM:', response);
   }).catch(error => {
@@ -438,7 +438,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Stoppen
 
-```http
+```javascript
   myFireApi.VM().stopVM(vmID).then(response => {
     console.log('Antwort beim Stoppen der VM:', response);
   }).catch(error => {
@@ -452,7 +452,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> VM Neustarten
 
-```http
+```javascript
   myFireApi.VM().restartVM(vmID).then(response => {
         console.log('restartVM response:', response);
   }).catch(error => {
@@ -471,7 +471,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Einen DNS-Eintrag erstellen
 
-```http
+```javascript
   myFireApi.Domain().addDNS(domain, type, name, data).then(response => {
         console.log('DNS-Eintrag hinzugefügt:', response);
   }).catch(error => {
@@ -490,7 +490,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Abrufen von DNS-Einträgen
 
-```http
+```javascript
   myFireApi.Domain().getDNSentries(domain).then(entries => {
         console.log('DNS-Einträge:', entries);
   }).catch(error => {
@@ -504,7 +504,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Einen DNS-Eintrag löschen
 
-```http
+```javascript
   myFireApi.Domain().deleteDNSentrie(domain, recordId).then(response => {
         console.log('DNS-Eintrag gelöscht:', response);
   }).catch(error => {
@@ -519,7 +519,7 @@ Um die FireAPI-24Fire in deinem Projekt zu installieren, führe bitte den folgen
 
 #### -> Einen DNS-Eintrag bearbeiten
 
-```http
+```javascript
 myFireApi.Domain().editDNSentrie(domain, recordId, type, name, data)
     .then(response => {
         console.log('DNS-Eintrag bearbeitet:', response);
@@ -546,7 +546,7 @@ myFireApi.Domain().editDNSentrie(domain, recordId, type, name, data)
 
 #### -> Einen Handle erstellen
 
-```http
+```javascript
 myFireApi.Domain().createHandle(gender, firstname, lastname, street, number, zipcode, city, region, countrycode, email)
     .then(response => {
         console.log('Handle erstellt:', response);
@@ -572,7 +572,7 @@ myFireApi.Domain().createHandle(gender, firstname, lastname, street, number, zip
 
 #### -> Handle Abrufen
 
-```http
+```javascript
 myFireApi.Domain().getHandle(handle).then(handleInfo => {
     console.log('Handle-Informationen abgerufen:', handleInfo);
   }).catch(error => {
@@ -586,7 +586,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Handle bearbeiten
 
-```http
+```javascript
   myFireApi.Domain().updateHandle(handle, option, data).then(response => {
     console.log('Handle aktualisiert:', response);
   }).catch(error => {
@@ -607,7 +607,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Countriecodes Abrufen
 
-```http
+```javascript
   myFireApi.Domain().getCountriecodes().then(countryCodes => {
     console.log('Ländercodes abgerufen:', countryCodes);
   }).catch(error => {
@@ -621,7 +621,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Alle Domains abrufen
 
-```http
+```javascript
   myFireApi.Domain().getAllDomains().then(domains => {
       console.log('Alle Domains abgerufen:', domains);
   }).catch(error => {
@@ -633,7 +633,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Eine Domain regestrieren
 
-```http
+```javascript
   myFireApi.Domain().registarDomain(domain, handle).then(response => {
         console.log('Domain registriert:', response);
   }).catch(error => {
@@ -649,7 +649,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Eine Domain übertragen via Authcode
 
-```http
+```javascript
   myFireApi.Domain().transferDomain(domain, handle, authcode).then(response => {
     console.log('Domain übertragen:', response);
   }).catch(error => {
@@ -666,7 +666,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Eine Domain Löschen / Kündigen
 
-```http
+```javascript
   myFireApi.Domain().deleteDomain(domain).then(response => {
     console.log('Domain gelöscht:', response);
   }).catch(error => {
@@ -681,7 +681,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Eine Domain Löschung zurückziehen
 
-```http
+```javascript
   myFireApi.Domain().undeleteDomain(domain).then(response => {
     console.log('Domain wiederhergestellt:', response);
   }).catch(error => {
@@ -696,7 +696,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Einen Authcode für eine Domain anfordern
 
-```http
+```javascript
   myFireApi.Domain().getAuthcode(domain).then(authcode => {
     console.log('Authcode abgerufen:', authcode);
   }).catch(error => {
@@ -711,7 +711,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Die Preise für Domains anfordern
 
-```http
+```javascript
   myFireApi.Domain().getDomainPricing().then(pricing => {
     console.log('Domain-Preisgestaltung abgerufen:', pricing);
   }).catch(error => {
@@ -723,7 +723,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Genauere Informationen zu einer Domain Abrufen
 
-```http
+```javascript
   myFireApi.Domain().getDomainInfo(domain).then(domainInfo => {
     console.log('Domain-Informationen abgerufen:', domainInfo);
   }).catch(error => {
@@ -738,7 +738,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Domain Verfügbarkeitscheck ausführen
 
-```http
+```javascript
   myFireApi.Domain().checkDomainAvailability(domain).then(availability => {
     console.log('Verfügbarkeit der Domain überprüft:', availability);
   }).catch(error => {
@@ -754,7 +754,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Nameserver für eine Domain ändern
 
-```http
+```javascript
   myFireApi.Domain().changeNameserver(domain, ns1, ns2, ns3, ns4, ns5).then(response => {
         console.log('Nameserver geändert:', response);
   }).catch(error => {
@@ -779,7 +779,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 ####  -> Den Marktplatz abrufen
 
-```http
+```javascript
     myFireApi.dedicated().getMarket().then(marketData => {
         console.log('Market Data:', marketData);
     }).catch(error => {
@@ -791,7 +791,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Verfügabrkeit überprüfen
 
-```http
+```javascript
     myFireApi.dedicated().checkAvailability(identifier).then(availabilityData => {
         console.log('Availability Data:', availabilityData);
     }).catch(error => {
@@ -807,7 +807,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Einen Dedicated Server Kaufen
 
-```http
+```javascript
     myFireApi.dedicated().buyDedicatedServer(identifier, webhook, connect).then(response => {
         console.log('Buy Dedicated Server Response:', response);
     }).catch(error => {
@@ -826,7 +826,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Genauere Informationen zu einem Dedi anzeigen
 
-```http
+```javascript
     myFireApi.dedicated().showDedicatedInfo(identifier).then(dedicatedInfo => {
         console.log('Dedicated Info:', dedicatedInfo);
     }).catch(error => {
@@ -841,7 +841,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Dedicated-Server im Besitz anzeigen lassen
 
-```http
+```javascript
     myFireApi.dedicated().showAllDedicated().then(allDedicatedInfo => {
         console.log('All Dedicated Info:', allDedicatedInfo);
     }).catch(error => {
@@ -853,7 +853,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Einen Dedicated-Server löschen / Kündigen
 
-```http
+```javascript
     myFireApi.dedicated().deleteDedicated(identifier).then(deleteResponse => {
         console.log('Delete Dedicated Response:', deleteResponse);
     }).catch(error => {
@@ -869,7 +869,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Eine Dedicated-Server löschung / Kündigung zurückziehen
 
-```http
+```javascript
     myFireApi.dedicated().undeleteDedicated(identifier).then(undeleteResponse => {
     console.log('Undelete Dedicated Response:', undeleteResponse);
     }).catch(error => {
@@ -890,7 +890,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Alle Anfragen anzeigen
 
-```http
+```javascript
     myFireApi.account().getAllRequests(offset).then(requests => {
         console.log('All requests:', requests);
     }).catch(error => {
@@ -908,7 +908,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Alle Rechnungen anzeigen lassen
 
-```http
+```javascript
     myFireApi.accounting().showAllInvoices().then(invoices => {
         console.log('Alle Rechnungen:', invoices);
     }).catch(error => {
@@ -920,7 +920,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Genaue Informationen zu einer Rechnung anrufen
 
-```http
+```javascript
     myFireApi.accounting().getInvoiceDetails(InvoiceID).then(invoiceDetails => {
         console.log('Details für Rechnung mit ID ' + InvoiceID + ':', invoiceDetails);
     }).catch(error => {
@@ -937,7 +937,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Aktuellen Rechnungsstand anzeigen
 
-```http
+```javascript
     myFireApi.accounting().getCurrentInvoiceStatus().then(currentStatus => {
         console.log('Aktueller Rechnungsstatus:', currentStatus);
     }).catch(error => {
@@ -950,7 +950,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Aktuelle Preise anzeigen
 
-```http
+```javascript
     myFireApi.accounting().getPricings().then(pricings => {
         console.log('Pricings:', pricings);
     }).catch(error => {
@@ -963,7 +963,7 @@ myFireApi.Domain().getHandle(handle).then(handleInfo => {
 
 #### -> Aktuelle Rabbataktionen anzeigen lassen
 
-```http
+```javascript
     myFireApi.accounting().getSales().then(sales => {
         console.log('Verkäufe:', sales);
     }).catch(error => {
