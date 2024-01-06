@@ -1,6 +1,6 @@
 {
   "name": "fireapi-24fire",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Nutze die fireapi in Nodejs, sicher und schnell",
   "main": "src/index.js",
   "repository": {
@@ -9,10 +9,13 @@
   },
   "homepage": "https://github.com/FlosTechnikwelt/fireapi-24fire.git",
   "keywords": [
-    "fireapi",
     "24fire",
+    "fireapi",
+    "api",
     "Hosting",
-    "Reselling"
+    "Reselling",
+    "wrapper",
+    "flostechnikwelt"
   ],
   "author": "FlosTechnikwelt",
   "license": "Apache-2.0",
