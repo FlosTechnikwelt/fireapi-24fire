@@ -1,0 +1,17 @@
+{
+  "name": "fireapi-24fire",
+  "version": "1.0.0",
+  "description": "Nutze die fireapi in Nodejs, sicher und schnell",
+  "main": "src/index.js",
+  "keywords": [
+    "fireapi",
+    "24fire",
+    "Hosting",
+    "Reselling"
+  ],
+  "author": "FlosTechnikwelt",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.6.4"
+  }
+}
