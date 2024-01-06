@@ -26,7 +26,8 @@ class fireApi {
         async function listVM() {
             const response = await axios.get("https://live.fireapi.de/vm/list", {
                 headers: {
-                    AUTHORIZATION: "Bearer " + apiKey,
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -36,7 +37,8 @@ class fireApi {
         async function listHosts() {
             const response = await axios.get("https://live.fireapi.de/vm/list/hosts", {
                 headers: {
-                    AUTHORIZATION: "Bearer " + apiKey,
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -46,7 +48,8 @@ class fireApi {
         async function listOS() {
             const response = await axios.get("https://live.fireapi.de/vm/list/os", {
                 headers: {
-                    AUTHORIZATION: "Bearer " + apiKey,
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -56,7 +59,8 @@ class fireApi {
         async function listISO() {
             const response = await axios.get("https://live.fireapi.de/vm/list/iso", {
                 headers: {
-                    AUTHORIZATION: "Bearer " + apiKey,
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
