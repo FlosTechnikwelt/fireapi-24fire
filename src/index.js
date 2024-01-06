@@ -16,7 +16,9 @@ const fireapiError = "[FIREAPI]: "
 class fireApi {
     constructor(apiKey) {
         this.apiKey = apiKey;
+        if(!apiKey) { return fireapiError + "No API-Key was given"}
     }
+
 
     list() {
         const apiKey = this.apiKey;
@@ -74,7 +76,8 @@ class fireApi {
         async function getDDOSsettings() {
             const response = await axios.get(`https://live.fireapi.de/vm/${vmID}/ddos/`, {
                 headers: {
-                    AUTHORIZATION: "Bearer " + apiKey, 
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -89,8 +92,9 @@ class fireApi {
                 layer7,
                 ip_address,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -119,8 +123,9 @@ class fireApi {
 
         async function createBackup() {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/backup/create/`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -129,8 +134,9 @@ class fireApi {
         async function createBackupStatus() {
 
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/backup/create/status`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -142,8 +148,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/backup/restore`, {
                 backup_id,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -155,8 +162,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/backup/restore/status`, {
                 backup_id,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -168,8 +176,9 @@ class fireApi {
             const response = await axios.delete(`https://live.fireapi.de/vm/${vmID}/backup/restore`, {
                 backup_id,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -193,8 +202,9 @@ class fireApi {
             const response = await axios.put(`https://live.fireapi.de/vm/${vmID}/iso`, {
                 iso,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -243,8 +253,9 @@ class fireApi {
                 backup_slots,
                 network_speed,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -259,8 +270,9 @@ class fireApi {
                 backup_slots,
                 network_speed,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -269,8 +281,9 @@ class fireApi {
         async function getVMconfig(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/vm/${vmID}/config`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -282,8 +295,9 @@ class fireApi {
                 domain,
                 ip_address,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -293,8 +307,9 @@ class fireApi {
         async function noVNC(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/novnc`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -304,8 +319,9 @@ class fireApi {
         async function deleteVM(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.delete(`https://live.fireapi.de/vm/${vmID}/delete`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -315,8 +331,9 @@ class fireApi {
         async function VMstatus(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/vm/${vmID}/status`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -326,8 +343,9 @@ class fireApi {
         async function installStatus(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/vm/${vmID}/status/installation`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -336,8 +354,9 @@ class fireApi {
         async function resetPassword(vmID) {
             if(!vmID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/password-reset`, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -348,8 +367,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/power`, {
                 'mode': 'start',
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -360,8 +380,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/power`, {
                 'mode': 'stop',
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -372,8 +393,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/vm/${vmID}/power`, {
                 'mode': 'restart',
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -410,8 +432,9 @@ class fireApi {
                 name,
                 data,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -420,8 +443,9 @@ class fireApi {
         async function getDNSentries(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/domain/${domain}/dns/`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -432,8 +456,9 @@ class fireApi {
             const response = await axios.delete(`https://live.fireapi.de/domain/${domain}/dns/remove`, {
                 record_id,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -447,8 +472,9 @@ class fireApi {
                 name,
                 data,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -468,8 +494,9 @@ class fireApi {
                 countrycode,
                 email,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -478,8 +505,9 @@ class fireApi {
         async function getHandle(handle) {
             if(!handle) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/domain/handle/${handle}/info`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -492,8 +520,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/handle/${handle}/update`, {
                 option: data,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -501,8 +530,9 @@ class fireApi {
 
         async function getCountriecodes() {
             const response = await axios.get(`https://live.fireapi.de/domain/handle/countries`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -510,8 +540,9 @@ class fireApi {
 
         async function getAllDomains() {
             const response = await axios.get(`https://live.fireapi.de/domain/list`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -523,8 +554,9 @@ class fireApi {
                 domain,
                 handle,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -537,8 +569,9 @@ class fireApi {
                 handle,
                 authcode,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -547,8 +580,9 @@ class fireApi {
         async function deleteDomain(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.delete(`https://live.fireapi.de/domain/${domain}/delete`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -557,8 +591,9 @@ class fireApi {
         async function undeleteDomain(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.post(`https://live.fireapi.de/domain/${domain}/undelete`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -567,8 +602,9 @@ class fireApi {
         async function getAuthcode(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.post(`https://live.fireapi.de/domain/${domain}/authcode`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -576,8 +612,9 @@ class fireApi {
 
         async function getDomainPricing() {
             const response = await axios.get(`https://live.fireapi.de/domain/pricings`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -586,8 +623,9 @@ class fireApi {
         async function getDomainInfo(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/domain/${domain}/info`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -596,8 +634,9 @@ class fireApi {
         async function checkDomainAvailability(domain) {
             if(!domain) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/domain/${domain}/check`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -655,8 +694,9 @@ class fireApi {
 
         async function getMarket() {
             const response = await axios.get(`https://live.fireapi.de/dedicated/available`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -665,8 +705,9 @@ class fireApi {
         async function checkAvailability(identifier) {
             if(!identifier) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/dedicated/available/${identifier}`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -684,8 +725,9 @@ class fireApi {
             }
         
             const response = await axios.put(`https://live.fireapi.de/dedicated/${identifier}/purchase`, requestBody, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -694,8 +736,9 @@ class fireApi {
         async function showDedicatedInfo(identifier) {
             if(!identifier) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/dedicated/${identifier}/info`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -703,8 +746,9 @@ class fireApi {
 
         async function showAllDedicated() {
             const response = await axios.get(`https://live.fireapi.de/dedicated/list`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -713,8 +757,9 @@ class fireApi {
         async function deleteDedicated(identifier) {
             if(!identifier) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.delete(`https://live.fireapi.de/dedicated/${identifier}/delete`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -723,8 +768,9 @@ class fireApi {
         async function undeleteDedicated(identifier) {
             if(!identifier) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.post(`https://live.fireapi.de/dedicated/${identifier}/undelete`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -753,8 +799,9 @@ class fireApi {
             const response = await axios.post(`https://live.fireapi.de/account/requests`, {
                 offset,
             }, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -774,8 +821,9 @@ class fireApi {
 
         async function showAllInvoices() {
             const response = await axios.get(`https://live.fireapi.de/accounting/invoices`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -784,8 +832,9 @@ class fireApi {
         async function getInvoiceDetails(invoiceID) {
             if(!invoiceID) { return console.error(fireapiError + "This request could not be sent to the fireAPI because not all details were given."); }
             const response = await axios.get(`https://live.fireapi.de/accounting/invoices/${invoiceID}`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -793,8 +842,9 @@ class fireApi {
 
         async function getCurrentInvoiceStatus() {
             const response = await axios.get(`https://live.fireapi.de/accounting/invoices/current`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -802,8 +852,9 @@ class fireApi {
 
         async function getPricings() {
             const response = await axios.get(`https://live.fireapi.de/accounting/pricings`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
@@ -811,8 +862,9 @@ class fireApi {
 
         async function getSales() {
             const response = await axios.get(`https://live.fireapi.de/accounting/sales`, {
-                headers: { 
-                    AUTHORIZATION: apiKey, 
+                headers: {
+                    //'Authorization': `Bearer ${apiKey}`,
+                    'X-FIRE-APIKEY': apiKey,
                 },
             });
             return response.data;
